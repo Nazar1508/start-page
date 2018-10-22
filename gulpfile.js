@@ -2,8 +2,8 @@
 
 var gulp = require("gulp");
 var less = require("gulp-less");
-var htmlmin = require('gulp-htmlmin');
-var uglify = require('gulp-uglify');
+var htmlmin = require("gulp-htmlmin");
+var uglify = require("gulp-uglify");
 var plumber = require("gulp-plumber");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
@@ -15,10 +15,9 @@ var svgstore = require("gulp-svgstore");
 var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var server = require("browser-sync").create();
-var run = require("run-sequence");
 var del = require("del");
 
-gulp.task("style", function() {
+gulp.task("style", function () {
   return gulp.src("source/less/style.less")
     .pipe(plumber())
     .pipe(less())
@@ -75,7 +74,7 @@ gulp.task("html", function () {
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("serve", function() {
+gulp.task("serve", function () {
   server.init({
     server: "build/",
     notify: false,
@@ -104,6 +103,5 @@ gulp.task("clean", function () {
   return del("build");
 });
 
-gulp.task("build", gulp.series("clean", "style", "copy","sprite", "html", "scripts")
+gulp.task("build", gulp.series("clean", "style", "copy", "sprite", "html", "scripts")
 );
-
